@@ -1,3 +1,5 @@
+package game;
+
 
 class Cell {
 	// Coordinates of the top-left corner of the grid cell 
