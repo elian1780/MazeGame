@@ -1,6 +1,7 @@
 package game;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -24,7 +25,7 @@ public class Game {
 
 		JFrame frame = new JFrame("JK MazeGame");
 		Panel panel = new Panel();
-		frame.setSize(width, height);
+		frame.setSize(781, 880);
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
@@ -55,9 +56,11 @@ public class Game {
 		});
 	}
 
-	private static int width = 790, height = 880;
-
 }
+
+
+
+
 
 class Panel extends JPanel implements ActionListener {
 	private int width = 800, height = 800;
@@ -73,6 +76,9 @@ class Panel extends JPanel implements ActionListener {
 	int a = 0, b = 0;
 	static Cell cell;
 	int currentGrid = 0;
+	long startTime;
+	long stopTime;
+	boolean timerHasStarted = false;
 
 	// JPanel constructor
 	public Panel() {
@@ -87,7 +93,7 @@ class Panel extends JPanel implements ActionListener {
 		blue = 255;
 		green = 178;
 		stack = new Stack<Cell>();
-		timer = new Timer(5, this);
+		timer = new Timer(30, this);
 		timer.start();
 		Current = grid.get(0);
 		Current.visited = true;
@@ -155,12 +161,9 @@ class Panel extends JPanel implements ActionListener {
 			}
 			// visited and unvisited cells have different colors
 			if (cell.visited) {
-				// g.setColor(new Color((int)(red * 255) , (int)(green * 255) , (int)(blue *
-				// 255) , 100)) ;
 				g.setColor(new Color(red, green, blue, 100));
 				g.fillRect(x, y, w, w);
 				g.setColor(new Color(255, 255, 255, 100));
-				// g.setColor(Color.white) ;
 			}
 			// distinguish the current cell from the rest
 			if (cell.equals(Current) && !mazeGenerated) {
@@ -179,15 +182,38 @@ class Panel extends JPanel implements ActionListener {
 		// set starting point and ending point color color
 		if (mazeGenerated) {
 			// set starting point and ending point color color
-
-			// g.setColor(Color.PINK);
-			// g.fillRect(0, 0, w, w);
-			// g.setColor(Color.gray);
-			// g.fillRect(720, 0, w, w);
+			g.setColor(Color.PINK);
+			g.fillRect(10, 10, w - 20, w - 20);
+			g.setColor(Color.gray);
+			g.fillRect(730, 730, w - 20, w - 20);
 			g.drawImage(img, a, b, this);
+			startTimer();
+			stopTime = System.currentTimeMillis();
+			long elapsedTime = (stopTime - startTime) / 1000;
+			g.setFont(new Font("SansSerif", Font.PLAIN, 30));
+			g.setColor(Color.PINK);
+			g.drawString("Time : " + String.valueOf(elapsedTime) + (elapsedTime == 1 ? " second" : " seconds"), 20,
+					830);
 
 		}
 
+	}
+
+	void startTimer() {
+		if (!timerHasStarted) {
+			startTime = System.currentTimeMillis();
+
+			timerHasStarted = true;
+			timer = new Timer(0, new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					repaint();
+				}
+			});
+			timer.setRepeats(true);
+			timer.setDelay(1000);
+			timer.start();
+		}
 	}
 
 	// remove the wall between the current and next cell
@@ -275,8 +301,14 @@ class Panel extends JPanel implements ActionListener {
 			}
 			break;
 		}
-
+		checkIfWon();
 		repaint();
 	}
 
+	private void checkIfWon() {
+		if (currentGrid == 168) {
+			// todo
+		}
+
+	}
 }
