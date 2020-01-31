@@ -71,7 +71,7 @@ class Panel extends JPanel implements ActionListener {
 	int red, green, blue;
 	private ArrayList<Cell> grid = new ArrayList<Cell>(); // grid represented as an Arraylist
 	boolean mazeGenerated = false;
-	Image img = Toolkit.getDefaultToolkit().getImage("images/jk.resized.png");
+	Image img = Toolkit.getDefaultToolkit().getImage("images/g.gif");
 	int direction = 0;
 	int a = 0, b = 0;
 	static Cell cell;
@@ -93,7 +93,7 @@ class Panel extends JPanel implements ActionListener {
 		blue = 255;
 		green = 178;
 		stack = new Stack<Cell>();
-		timer = new Timer(30, this);
+		timer = new Timer(5, this);
 		timer.start();
 		Current = grid.get(0);
 		Current.visited = true;

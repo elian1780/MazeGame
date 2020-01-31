@@ -17,12 +17,13 @@ public class HowToPlay extends javax.swing.JFrame {
     /**
      * Creates new form HowToPlay
      */
-      ImageIcon img = new ImageIcon("images/htp.resized.png");
+      ImageIcon img = new ImageIcon("images/htp.png");
     public HowToPlay() {
         initComponents();
         setTitle("How To Play");
         setLocationRelativeTo(null);
         jLabel6.setIcon(img);
+        setResizable(false);
        
     }
 
@@ -51,7 +52,7 @@ public class HowToPlay extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Ubuntu", 3, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(253, 120, 168));
-        jLabel1.setText("How To Play");
+        jLabel1.setText("How To Play  ");
 
         jLabel2.setBackground(new java.awt.Color(61, 92, 104));
         jLabel2.setFont(new java.awt.Font("Ubuntu", 2, 24)); // NOI18N
@@ -81,8 +82,6 @@ public class HowToPlay extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setText("jLabel6");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -93,7 +92,7 @@ public class HowToPlay extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(backBtn)
                         .addGap(158, 158, 158)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 715, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 765, javax.swing.GroupLayout.PREFERRED_SIZE)
