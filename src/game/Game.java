@@ -24,7 +24,7 @@ public class Game {
 	public Game() {
 
 		JFrame frame = new JFrame("JK MazeGame");
-		Panel panel = new Panel();
+		Panel panel = new Panel(frame);
 		frame.setSize(781, 880);
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -58,11 +58,8 @@ public class Game {
 
 }
 
-
-
-
-
 class Panel extends JPanel implements ActionListener {
+    
 	private int width = 800, height = 800;
 	public int rows, cols, w = 60; // number of rows,cols in a grid and width of a grid cell
 	private Cell Current, Next;
@@ -79,9 +76,12 @@ class Panel extends JPanel implements ActionListener {
 	long startTime;
 	long stopTime;
 	boolean timerHasStarted = false;
+        long elapsedTime;
+        JFrame frame;
 
 	// JPanel constructor
-	public Panel() {
+	public Panel(JFrame frame) {
+            this.frame=frame;
 		cols = (int) (width / w);
 		rows = (int) (height / w);
 		for (int j = 0; j < cols; ++j) {
@@ -189,7 +189,7 @@ class Panel extends JPanel implements ActionListener {
 			g.drawImage(img, a, b, this);
 			startTimer();
 			stopTime = System.currentTimeMillis();
-			long elapsedTime = (stopTime - startTime) / 1000;
+                        elapsedTime = (stopTime - startTime) / 1000;
 			g.setFont(new Font("SansSerif", Font.PLAIN, 30));
 			g.setColor(Color.PINK);
 			g.drawString("Time : " + String.valueOf(elapsedTime) + (elapsedTime == 1 ? " second" : " seconds"), 20,
@@ -306,9 +306,13 @@ class Panel extends JPanel implements ActionListener {
 	}
 
 	private void checkIfWon() {
+            System.out.println(currentGrid);
 		if (currentGrid == 168) {
-			// todo
-		}
+                        frame.dispose();
+			gameOver g = new gameOver(String.valueOf(elapsedTime));
+                        g.setVisible(true);
+                        
+                }
 
 	}
 }

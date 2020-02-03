@@ -38,10 +38,9 @@ public class GetScores {
 
 				String name = rs.getString("names");
 				String score = rs.getString("scores");
-				data[j] = name + " " + score;
+				data[j] = name + " - " + score + " seconds ";
 
-				System.out.println("j=" + j + ": " + data[j]);
-				j++;
+			j++;
 
 			}
 			s = data;

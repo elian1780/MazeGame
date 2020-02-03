@@ -52,6 +52,7 @@ public class Highscores extends javax.swing.JFrame {
         jLabel1.setText("Highsores");
 
         jList1.setBackground(new java.awt.Color(20, 25, 35));
+        jList1.setFont(new java.awt.Font("Ubuntu", 3, 36)); // NOI18N
         jList1.setForeground(new java.awt.Color(253, 120, 190));
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             public int getSize() { return g.s.length;}
