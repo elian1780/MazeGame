@@ -163,25 +163,25 @@ class Panel extends JPanel implements ActionListener {
 			if (cell.visited) {
 				g.setColor(new Color(red, green, blue, 100));
 				g.fillRect(x, y, w, w);
-				g.setColor(new Color(255, 255, 255, 100));
+				//g.setColor(new Color(255, 255, 255, 100));
 			}
 			// distinguish the current cell from the rest
 			if (cell.equals(Current) && !mazeGenerated) {
 				g.setColor(new Color(253, 120, 168));
 				g.fillRect(x, y, w, w);
-				g.setColor(new Color(255, 255, 255, 100));
+				//g.setColor(new Color(255, 255, 255, 100));
 
 			} else if (cell.isOnStack) {
 				g.setColor(new Color(209, 158, 185, 100));
 				g.fillRect(x, y, w, w);
-				g.setColor(new Color(255, 255, 255, 100));
+				//g.setColor(new Color(255, 255, 255, 100));
 
 			}
 		}
 
 		// set starting point and ending point color color
 		if (mazeGenerated) {
-			// set starting point and ending point color color
+			
 			g.setColor(Color.PINK);
 			g.fillRect(10, 10, w - 20, w - 20);
 			g.setColor(Color.gray);
